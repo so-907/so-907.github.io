@@ -10,10 +10,10 @@ const CONFIG = {
     handle: "so-907",
     role: "MSc AI & Robotics Student",
     base: "Sapienza University of Rome",
-    tagline: "Bridging Artificial Intelligence, Data Ethics, and Natural Language Processing.",
+    tagline: "Building intelligent models at the intersection of AI, Data Ethics, and Natural Language Processing.",
     bio: [
-      "MSc Artificial Intelligence and Robotics student at Sapienza University of Rome with an interdisciplinary background spanning AI, Data Ethics, and Philosophy of Technology.",
-      "Recipient of the ELICSIR Scuola Ortogonale Excellence Fellowship. Currently focusing on NLP, Generative AI, Machine Learning, and explainable data models."
+      "MSc student in Artificial Intelligence and Robotics at Sapienza University of Rome, with an interdisciplinary background spanning AI, Data Ethics, and Philosophy of Technology.",
+      "Recipient of the ELICSIR Orthogonal School Excellence Fellowship. Currently focused on NLP, Generative AI, Machine Learning, and explainable data modeling."
     ]
   },
 
@@ -27,7 +27,7 @@ const CONFIG = {
     {
       title: "Clustering & Explainability",
       repo: "Clustering-and-explainability-on-European-Social-Survey",
-      desc: "K-Means clustering on the European Social Survey dataset paired with model explainability analysis.",
+      desc: "K-Means clustering pipeline applied to the European Social Survey dataset, integrated with model explainability analysis.",
       tags: ["Python", "K-Means", "Explainable AI", "Jupyter"],
       icon: "target",
       color: "cyan"
@@ -35,7 +35,7 @@ const CONFIG = {
     {
       title: "Sentiment Analysis · Recipe Reviews",
       repo: "Sentiment-Analysis-on-Recipe-Reviews",
-      desc: "Sentiment analysis pipeline built on the Recipe Reviews and User Feedback dataset.",
+      desc: "End-to-end sentiment analysis pipeline evaluated on the Recipe Reviews and User Feedback dataset.",
       tags: ["Python", "NLP", "Sentiment Analysis", "Jupyter"],
       icon: "chat",
       color: "yellow"
@@ -43,7 +43,7 @@ const CONFIG = {
     {
       title: "RoBERTa YouTube Analyzer",
       repo: "roberta-youtube-analyzer",
-      desc: "YouTube comments sentiment analysis powered by RoBERTa Transformers and designed with MLOps best practices.",
+      desc: "YouTube comment sentiment classifier powered by RoBERTa Transformers and designed following MLOps best practices.",
       tags: ["RoBERTa", "Transformers", "MLOps", "NLP"],
       icon: "play",
       color: "pink"
@@ -51,7 +51,7 @@ const CONFIG = {
     {
       title: "SNLI Textual Entailment",
       repo: "SNLI-textual-entailment",
-      desc: "Textual entailment classification architecture using BiLSTM networks on the SNLI dataset.",
+      desc: "Textual entailment classification architecture based on Bidirectional LSTM networks trained on the SNLI dataset.",
       tags: ["BiLSTM", "SNLI", "Textual Entailment", "NLP"],
       icon: "link",
       color: "violet"
@@ -61,29 +61,29 @@ const CONFIG = {
   skills: [
     { group: "Languages & Frameworks", items: ["Python", "PyTorch", "HuggingFace", "Scikit-Learn", "Pandas", "SQL", "MATLAB", "C++"] },
     { group: "Tools & Environment", items: ["Git", "Linux", "Docker", "LaTeX", "Jupyter"] },
-    { group: "Domains", items: ["Machine Learning", "Multilingual NLP", "Generative AI", "Computer Vision", "Data Ethics"] }
+    { group: "Core Domains", items: ["Machine Learning", "Multilingual NLP", "Generative AI", "Computer Vision", "Data Ethics"] }
   ],
 
   timeline: [
     {
       year: "10/2025 – Present",
-      title: "ELICSIR Scuola Ortogonale Fellowship",
-      text: "Awarded a national excellence fellowship granted to 20 top Master's students in Italy based on academic performance and technical evaluation."
+      title: "ELICSIR Orthogonal School Fellowship",
+      text: "Awarded a national merit fellowship granted to 20 selected Master's students across Italy, based on academic excellence and technical assessment."
     },
     {
       year: "2025 – Present",
-      title: "MSc AI & Robotics · Sapienza",
-      text: "Graduate coursework: Machine Learning, Computer Vision, Multilingual NLP, and Generative AI."
+      title: "MSc AI & Robotics · Sapienza University",
+      text: "Graduate coursework focusing on Machine Learning, Computer Vision, Multilingual NLP, and Generative AI."
     },
     {
       year: "2022 – 2025",
-      title: "BSc Philosophy & AI · Sapienza",
-      text: "Graduated with 110/110. Thesis and coursework focused on AI, Data Ethics, Data Analysis, and Philosophy of Technology."
+      title: "BSc Philosophy & AI · Sapienza University",
+      text: "Graduated with 110/110 (Full Marks). Final thesis and curriculum focused on AI, Data Ethics, Data Analysis, and Philosophy of Technology."
     },
     {
       year: "2024 – Present",
       title: "Academic Merit Grants",
-      text: "Selected for student assistantships at DIAG Library, ADIMUS Project (museum asset digitization), and Philosophy Department Library."
+      text: "Awarded academic assistantships at the DIAG Engineering Library, the ADIMUS museum asset digitization project, and the Philosophy Department Library."
     }
   ],
 
