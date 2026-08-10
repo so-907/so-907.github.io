@@ -1,10 +1,5 @@
 /* ============================================================
    GAME.JS
-   Un piccolo bonus level nascosto. Si sblocca con una sequenza
-   di tasti (freccia su/giù/sinistra/destra + B + A) digitata in
-   un punto qualsiasi della pagina, oppure con 5 tap veloci
-   sull'iconcina nel footer (per chi è da mobile). Nessuna
-   immagine esterna: tutto è disegnato su canvas.
    ============================================================ */
 
 (function () {
@@ -148,11 +143,10 @@
       ctx.font = "20px 'VT323', monospace";
       ctx.fillText("GAME OVER", W / 2, H / 2 - 6);
       ctx.font = "14px 'VT323', monospace";
-      ctx.fillText("spazio o tap per ricominciare", W / 2, H / 2 + 18);
+      ctx.fillText("press space or tap to restart", W / 2, H / 2 + 18);
     }
   }
 
-  /* ---------- Rilevamento sequenza segreta ---------- */
   function onSequenceKey(e) {
     var k = e.key;
     buffer.push(k.length === 1 ? k.toLowerCase() : k);
@@ -177,7 +171,6 @@
     closeBtn.addEventListener("click", closeGame);
     overlay.addEventListener("click", function (e) { if (e.target === overlay) closeGame(); });
 
-    /* fallback per chi è da mobile: 5 tap veloci sull'icona nel footer */
     var easterBtn = document.querySelector(".easter-hint__q");
     if (easterBtn) {
       var count = 0, timer = null;

@@ -1,9 +1,5 @@
 /* ============================================================
    MAIN.JS
-   Legge CONFIG (config.js) e popola la pagina, gestisce boot
-   screen, navigazione, reveal-on-scroll, theme switcher e la
-   sezione contatti. Le icone sono disegnate a mano su griglie
-   pixel: nessuna immagine esterna necessaria.
    ============================================================ */
 
 (function () {
@@ -11,7 +7,6 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Icone pixel (griglie 0/1, 1 = pixel acceso) ---------- */
   var ICONS = {
     target: [
       "11111111", "10000001", "10111101", "10100101",
@@ -71,7 +66,7 @@
     var alreadyBooted = false;
     try { alreadyBooted = sessionStorage.getItem("sonia_booted") === "1"; } catch (e) { alreadyBooted = false; }
 
-    var lines = (window.CONFIG && CONFIG.bootLines) || ["PRONTO."];
+    var lines = (window.CONFIG && CONFIG.bootLines) || ["SYSTEM READY."];
 
     function hide() {
       boot.classList.add("is-hidden");
@@ -83,7 +78,7 @@
 
     if (alreadyBooted || reduceMotion) {
       lines.forEach(function (t) { linesBox.appendChild(el("div", "boot-line shown", t)); });
-      linesBox.appendChild(el("div", "boot-skip", "premi un tasto per continuare"));
+      linesBox.appendChild(el("div", "boot-skip", "Press any key to continue"));
       window.addEventListener("keydown", hide, { once: true });
       boot.addEventListener("click", hide, { once: true });
       if (alreadyBooted) hide();
@@ -96,7 +91,7 @@
       setTimeout(function () { line.classList.add("shown"); }, 300 * i);
     });
 
-    var skip = el("div", "boot-skip", "premi un tasto per continuare");
+    var skip = el("div", "boot-skip", "Press any key to continue");
     linesBox.appendChild(skip);
 
     window.addEventListener("keydown", hide, { once: true });
@@ -135,7 +130,7 @@
 
     var stats = document.getElementById("aboutStats");
     stats.innerHTML =
-      '<li><b>RUOLO</b> ' + p.role + '</li>' +
+      '<li><b>ROLE</b> ' + p.role + '</li>' +
       '<li><b>BASE</b> ' + p.base + '</li>' +
       '<li><b>HANDLE</b> @' + p.handle + '</li>';
 
@@ -143,7 +138,7 @@
     bio.innerHTML = p.bio.map(function (t) { return "<p>" + t + "</p>"; }).join("");
   }
 
-  /* ---------- SKILLS / INVENTORY ---------- */
+  /* ---------- SKILLS ---------- */
   function renderSkills() {
     var box = document.getElementById("inventory");
     box.innerHTML = "";
@@ -160,7 +155,7 @@
     });
   }
 
-  /* ---------- PROJECTS / CARTRIDGE SHELF ---------- */
+  /* ---------- PROJECTS ---------- */
   function renderProjects() {
     var box = document.getElementById("shelf");
     box.innerHTML = "";
@@ -177,13 +172,13 @@
         '<span class="cart__title">' + proj.title + '</span>' +
         '<p class="cart__desc">' + proj.desc + '</p>' +
         '<div class="cart__tags">' + proj.tags.map(function (t) { return '<span class="tag">' + t + '</span>'; }).join("") + '</div>' +
-        '<span class="cart__link">APRI REPO ›</span>';
+        '<span class="cart__link">OPEN REPO ›</span>';
 
       box.appendChild(card);
     });
   }
 
-  /* ---------- TIMELINE / MAPPA ---------- */
+  /* ---------- TIMELINE ---------- */
   function renderTimeline() {
     var box = document.getElementById("mapList");
     box.innerHTML = "";
@@ -197,7 +192,7 @@
     });
   }
 
-  /* ---------- CONTATTI / SAVE SCREEN ---------- */
+  /* ---------- CONTACTS ---------- */
   function renderContact() {
     var box = document.getElementById("save");
     box.innerHTML = "";
@@ -233,7 +228,7 @@
       setTimeout(function () { toast.classList.remove("is-shown"); }, 1800);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { show("COPIATO: " + text); })
+      navigator.clipboard.writeText(text).then(function () { show("COPIED: " + text); })
         .catch(function () { show(text); });
     } else {
       show(text);
@@ -249,7 +244,7 @@
     document.getElementById("easterIcon").innerHTML = pixelIconSVG("joystick");
   }
 
-  /* ---------- NAV: HUD attivo + burger mobile ---------- */
+  /* ---------- NAV ---------- */
   function initNav() {
     var burger = document.getElementById("burgerBtn");
     var list = document.getElementById("hudList");

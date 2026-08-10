@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sonia Sapia — Portfolio</title>
-<meta name="description" content="Sonia Sapia — AI & Robotics student @ Sapienza University of Rome. Portfolio interattivo in stile arcade retro con showcase progetti.">
+<meta name="description" content="Sonia Sapia — MSc AI & Robotics Student at Sapienza University of Rome. Interactive retro-arcade portfolio.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <div id="boot" role="dialog" aria-modal="true" aria-label="Schermata di avvio">
+  <div id="boot" role="dialog" aria-modal="true" aria-label="Boot screen">
     <div id="bootLines"></div>
   </div>
 
@@ -21,14 +21,14 @@
 
     <header class="hud">
       <span class="hud__name" id="hudNameText">SONIA SAPIA</span>
-      <button class="hud__burger" id="burgerBtn" aria-label="Apri menu" aria-controls="hudList">☰</button>
+      <button class="hud__burger" id="burgerBtn" aria-label="Open menu" aria-controls="hudList">☰</button>
       <ul class="hud__list" id="hudList">
         <li><a href="#hero">Home</a></li>
-        <li><a href="#about">Chi sono</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Progetti</a></li>
-        <li><a href="#timeline">Mappa</a></li>
-        <li><a href="#contact">Contatti</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </header>
 
@@ -41,17 +41,17 @@
           <p class="hero__role" id="heroRole"></p>
           <p class="hero__tagline" id="heroTagline"></p>
           <div class="hero__cta">
-            <a class="btn" href="#projects">VEDI I PROGETTI</a>
-            <a class="btn btn--ghost" href="#about">CHI SONO</a>
+            <a class="btn" href="#projects">VIEW PROJECTS</a>
+            <a class="btn btn--ghost" href="#about">ABOUT ME</a>
           </div>
-          <p class="hero__hint">Scorri per continuare ▼</p>
+          <p class="hero__hint">Scroll to explore ▼</p>
         </div>
       </section>
 
       <section id="about" class="section">
         <div class="container">
-          <span class="eyebrow">LIVELLO 1</span>
-          <h2 class="section-title">CHI SONO</h2>
+          <span class="eyebrow">LEVEL 1</span>
+          <h2 class="section-title">ABOUT ME</h2>
           <div class="about reveal">
             <div>
               <div class="about__portrait" id="aboutPortrait"></div>
@@ -67,32 +67,32 @@
 
       <section id="skills" class="section">
         <div class="container">
-          <span class="eyebrow">LIVELLO 2</span>
-          <h2 class="section-title">INVENTARIO</h2>
+          <span class="eyebrow">LEVEL 2</span>
+          <h2 class="section-title">INVENTORY & SKILLS</h2>
           <div class="inventory" id="inventory"></div>
         </div>
       </section>
 
       <section id="projects" class="section">
         <div class="container">
-          <span class="eyebrow">LIVELLO 3</span>
-          <h2 class="section-title">PROGETTI PUBBLICI</h2>
+          <span class="eyebrow">LEVEL 3</span>
+          <h2 class="section-title">PUBLIC PROJECTS</h2>
           <div class="shelf" id="shelf"></div>
         </div>
       </section>
 
       <section id="timeline" class="section">
         <div class="container">
-          <span class="eyebrow">LIVELLO 4</span>
-          <h2 class="section-title">LA MAPPA</h2>
+          <span class="eyebrow">LEVEL 4</span>
+          <h2 class="section-title">TIMELINE & MAP</h2>
           <ol class="map" id="mapList"></ol>
         </div>
       </section>
 
       <section id="contact" class="section">
         <div class="container">
-          <span class="eyebrow">LIVELLO 5</span>
-          <h2 class="section-title">SALVA &amp; CONTINUA</h2>
+          <span class="eyebrow">LEVEL 5</span>
+          <h2 class="section-title">SAVE & CONNECT</h2>
           <div class="save" id="save"></div>
         </div>
       </section>
@@ -101,14 +101,14 @@
     <footer class="site-footer">
       <p id="footerName"></p>
       <div class="easter-hint">
-        <button type="button" class="easter-hint__q" id="easterIcon" aria-describedby="easterPop" aria-label="???"></button>
+        <button type="button" class="easter-hint__q" id="easterIcon" aria-describedby="easterPop" aria-label="Secret code hint"></button>
         <span class="easter-hint__pop" id="easterPop">↑ ↑ ↓ ↓ ← → ← → B A</span>
       </div>
     </footer>
 
   </div>
 
-  <div class="theme-switcher" role="group" aria-label="Cambia tema colori">
+  <div class="theme-switcher" role="group" aria-label="Color theme switcher">
     <button class="theme-dot is-active" data-t="arcade" title="Arcade" aria-pressed="true"></button>
     <button class="theme-dot" data-t="gameboy" title="Game Boy" aria-pressed="false"></button>
     <button class="theme-dot" data-t="synthwave" title="Synthwave" aria-pressed="false"></button>
@@ -120,8 +120,8 @@
   <div class="game-overlay" id="gameOverlay" aria-hidden="true">
     <p class="game-overlay__title">BONUS LEVEL</p>
     <canvas id="gameCanvas" width="480" height="220"></canvas>
-    <p class="game-overlay__hint">Spazio / tap per saltare · Esc per uscire</p>
-    <button class="game-overlay__close" id="gameClose" type="button">ESCI (ESC)</button>
+    <p class="game-overlay__hint">Space / tap to jump · Esc to exit</p>
+    <button class="game-overlay__close" id="gameClose" type="button">EXIT (ESC)</button>
   </div>
 
   <script src="js/config.js"></script>

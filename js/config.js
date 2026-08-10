@@ -1,9 +1,6 @@
 /* ============================================================
    CONFIG.JS
-   Tutto quello che vuoi personalizzare vive qui dentro.
-   Cambia questi valori: il resto del sito si aggiorna da solo,
-   non serve toccare index.html, style.css o gli altri script.
-   Le righe con "✏️" sono quelle che ti conviene rivedere.
+   All personal information and portfolio data.
    ============================================================ */
 
 const CONFIG = {
@@ -11,29 +8,26 @@ const CONFIG = {
   player: {
     name: "Sonia Sapia",
     handle: "so-907",
-    role: "AI & Robotics Student",              // dal bio del tuo profilo GitHub
+    role: "MSc AI & Robotics Student",
     base: "Sapienza University of Rome",
-    tagline: "Costruisco modelli che imparano a leggere, guardare e riconoscere pattern nei dati.",
+    tagline: "Bridging Artificial Intelligence, Data Ethics, and Natural Language Processing.",
     bio: [
-      "Studio intelligenza artificiale applicata a linguaggio e dati, con un occhio sempre puntato su come e perché un modello arriva a una certa risposta.",
-      "Il codice qui sotto è quello con cui mi sono sporcata le mani finora: notebook, modelli, dataset. Il resto della storia è ancora \"in sviluppo\"."
+      "MSc Artificial Intelligence and Robotics student at Sapienza University of Rome with an interdisciplinary background spanning AI, Data Ethics, and Philosophy of Technology.",
+      "Recipient of the ELICSIR Scuola Ortogonale Excellence Fellowship. Currently focusing on NLP, Generative AI, Machine Learning, and explainable data models."
     ]
   },
 
   socials: {
     github: "https://github.com/so-907",
-    linkedin: "https://www.linkedin.com/in/sonia-sapia-183b7524a",
-    email: ""   // ✏️ aggiungi qui la tua email se vuoi che compaia nella sezione contatti
+    linkedin: "https://www.linkedin.com/in/sonia-sapia",
+    email: "soniasapia03@gmail.com"
   },
 
-  /* ✏️ PROGETTI — l'ordine qui sotto è l'ordine sullo scaffale delle cartucce.
-     "icon" accetta: "target" | "chat" | "play" | "link"
-     "color" accetta: "pink" | "cyan" | "yellow" | "violet"                */
   projects: [
     {
       title: "Clustering & Explainability",
       repo: "Clustering-and-explainability-on-European-Social-Survey",
-      desc: "Clustering con K-Means sull'European Social Survey, con studio sull'explainability del modello. Progetto per Scienza ed Etica dei Dati, a.a. 2024/2025.",
+      desc: "K-Means clustering on the European Social Survey dataset paired with model explainability analysis.",
       tags: ["Python", "K-Means", "Explainable AI", "Jupyter"],
       icon: "target",
       color: "cyan"
@@ -41,7 +35,7 @@ const CONFIG = {
     {
       title: "Sentiment Analysis · Recipe Reviews",
       repo: "Sentiment-Analysis-on-Recipe-Reviews",
-      desc: "Modello di sentiment analysis sul dataset \u201cRecipe Reviews and User Feedback\u201d. Progetto per Intelligenza Artificiale 2, a.a. 2024/2025.",
+      desc: "Sentiment analysis pipeline built on the Recipe Reviews and User Feedback dataset.",
       tags: ["Python", "NLP", "Sentiment Analysis", "Jupyter"],
       icon: "chat",
       color: "yellow"
@@ -49,7 +43,7 @@ const CONFIG = {
     {
       title: "RoBERTa YouTube Analyzer",
       repo: "roberta-youtube-analyzer",
-      desc: "Sentiment analysis sui commenti YouTube con RoBERTa Transformers, costruito seguendo best practice MLOps.",
+      desc: "YouTube comments sentiment analysis powered by RoBERTa Transformers and designed with MLOps best practices.",
       tags: ["RoBERTa", "Transformers", "MLOps", "NLP"],
       icon: "play",
       color: "pink"
@@ -57,52 +51,47 @@ const CONFIG = {
     {
       title: "SNLI Textual Entailment",
       repo: "SNLI-textual-entailment",
-      desc: "Modello di textual entailment sul dataset SNLI con architettura BiLSTM.",
+      desc: "Textual entailment classification architecture using BiLSTM networks on the SNLI dataset.",
       tags: ["BiLSTM", "SNLI", "Textual Entailment", "NLP"],
       icon: "link",
       color: "violet"
     }
   ],
 
-  /* ✏️ SKILLS — raggruppa come preferisci, aggiungi/rimuovi voci liberamente */
   skills: [
-    { group: "Linguaggi", items: ["Python"] },
-    { group: "ML & DL", items: ["Machine Learning", "Deep Learning", "Explainable AI"] },
-    { group: "NLP", items: ["Transformers", "RoBERTa", "BiLSTM", "Sentiment Analysis"] },
-    { group: "Strumenti", items: ["Jupyter", "MLOps", "Git & GitHub"] }
+    { group: "Languages & Frameworks", items: ["Python", "PyTorch", "HuggingFace", "Scikit-Learn", "Pandas", "SQL", "MATLAB", "C++"] },
+    { group: "Tools & Environment", items: ["Git", "Linux", "Docker", "LaTeX", "Jupyter"] },
+    { group: "Domains", items: ["Machine Learning", "Multilingual NLP", "Generative AI", "Computer Vision", "Data Ethics"] }
   ],
 
-  /* ✏️ TIMELINE — ho lasciato solo ciò che risulta dai tuoi repo pubblici,
-     completa pure con le date/tappe esatte del tuo percorso                */
   timeline: [
     {
-      year: "In corso",
-      title: "Sapienza University of Rome",
-      text: "Percorso di studi in ambito AI & Robotics."
+      year: "10/2025 – Present",
+      title: "ELICSIR Scuola Ortogonale Fellowship",
+      text: "Awarded a national excellence fellowship granted to 20 top Master's students in Italy based on academic performance and technical evaluation."
     },
     {
-      year: "2024/25",
-      title: "Intelligenza Artificiale 2",
-      text: "Sentiment analysis su recensioni di ricette \u2014 primo progetto NLP pubblicato."
+      year: "2025 – Present",
+      title: "MSc AI & Robotics · Sapienza",
+      text: "Graduate coursework: Machine Learning, Computer Vision, Multilingual NLP, and Generative AI."
     },
     {
-      year: "2024/25",
-      title: "Scienza ed Etica dei Dati",
-      text: "Clustering ed explainability sull'European Social Survey: non solo cosa predice un modello, ma perch\u00e9."
+      year: "2022 – 2025",
+      title: "BSc Philosophy & AI · Sapienza",
+      text: "Graduated with 110/110. Thesis and coursework focused on AI, Data Ethics, Data Analysis, and Philosophy of Technology."
     },
     {
-      year: "Ultimi mesi",
-      title: "NLP avanzato",
-      text: "RoBERTa per sentiment su YouTube, BiLSTM per textual entailment su SNLI."
+      year: "2024 – Present",
+      title: "Academic Merit Grants",
+      text: "Selected for student assistantships at DIAG Library, ADIMUS Project (museum asset digitization), and Philosophy Department Library."
     }
   ],
 
-  /* Testi del boot screen iniziale \u2014 puoi cambiarli o accorciare la lista */
   bootLines: [
-    "AVVIO SONIA.EXE...",
-    "CARICAMENTO MODULO NLP........ OK",
-    "CARICAMENTO MODULO ML.......... OK",
-    "CARICAMENTO MODULO CURIOSITA... OK",
-    "PRONTO."
+    "INITIALIZING SONIA.EXE...",
+    "LOADING MODULE: NLP & GENERATIVE AI......... OK",
+    "LOADING MODULE: DATA ETHICS & PHILOSOPHY... OK",
+    "VERIFYING FELLOWSHIP CREDENTIALS........... OK",
+    "SYSTEM READY."
   ]
 };
