@@ -79,17 +79,21 @@
       audioCtx = new (WIN.AudioContext || WIN.webkitAudioContext)();
     } catch (e) {}
   }
-  function blip(freq = 440, type = "square", duration = 0.07) {
+    function blip(freq = 520, type = "triangle", duration = 0.1) {
     if (audioMuted || !audioCtx) return;
     if (audioCtx.state === "suspended") audioCtx.resume();
     const o = audioCtx.createOscillator();
     const g = audioCtx.createGain();
     o.type = type;
-    o.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    g.gain.setValueAtTime(0.04, audioCtx.currentTime);
+    /* Quick slide from higher to lower = pleasant "tock" instead of a buzz */
+    o.frequency.setValueAtTime(freq + 150, audioCtx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(freq, audioCtx.currentTime + duration);
+    g.gain.setValueAtTime(0.1, audioCtx.currentTime);               // louder
     g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-    o.connect(g); g.connect(audioCtx.destination);
-    o.start(); o.stop(audioCtx.currentTime + duration);
+    o.connect(g);
+    g.connect(audioCtx.destination);
+    o.start();
+    o.stop(audioCtx.currentTime + duration);
   }
 
   /* ---------- 3. PIXEL ICONS (existing) ---------- */
