@@ -30,7 +30,7 @@
 [data-theme="gameboy"]{
   --bg:#0f380f; --bg-alt:#16481a; --bg-panel:#1c5522;
   --text:#c6e89b; --text-dim:#8bac6a;
-  --pink:#9bbc0f; --cyan:#8bac0f; --yellow:#c6de8c; --violet:#4f7f2f; --green:#9bbc0f;
+  --pink:#9bbc0f; --cyan:#8bac6f; --yellow:#c6de8c; --violet:#4f7f2f; --green:#9bbc0f;
 }
 [data-theme="synthwave"]{
   --bg:#1a0b2e; --bg-alt:#2d1b4e; --bg-panel:#341f5c;
@@ -51,7 +51,7 @@ body{
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 25px; /* Aumentato per maggiore leggibilità */
+  font-size: 25px;
   line-height: 1.5;
   -webkit-font-smoothing: none;
   overflow-x: hidden;
@@ -71,6 +71,11 @@ img,svg{ display:block; max-width:100%; }
   outline-offset: 3px;
 }
 
+/* Hide default cursor on desktop (custom cursor driven by JS) */
+@media (pointer: fine) {
+  body, a, button, .slot, .pad-btn, .cart, .theme-dot, input, textarea { cursor: none; }
+}
+
 /* ---------- 3. UTILITY ---------- */
 .eyebrow{
   font-family: var(--font-display);
@@ -88,13 +93,13 @@ img,svg{ display:block; max-width:100%; }
   text-shadow: 3px 3px 0 var(--bg-alt);
 }
 .container{
-  max-width: 1200px; /* Ampliato da 1080px a 1200px */
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 32px;
 }
 .section{
   position: relative;
-  padding: 65px 0 45px; /* Compattato per eliminare lo schermo vuoto */
+  padding: 80px 0;
 }
 .btn{
   font-family: var(--font-display);
@@ -149,6 +154,12 @@ img,svg{ display:block; max-width:100%; }
   );
   mix-blend-mode: multiply;
   opacity: 0.35;
+  animation: scan-flicker 0.15s infinite;
+}
+@keyframes scan-flicker {
+  0% { opacity: 0.35; }
+  50% { opacity: 0.32; }
+  100% { opacity: 0.35; }
 }
 .vignette{
   pointer-events:none;
@@ -248,7 +259,7 @@ img,svg{ display:block; max-width:100%; }
 
 /* ---------- 7. HERO / TITLE SCREEN ---------- */
 .hero{
-  min-height: calc(85vh - 70px);
+  min-height: 100dvh;
   display:flex;
   flex-direction: column;
   align-items:center;
@@ -304,6 +315,18 @@ img,svg{ display:block; max-width:100%; }
   margin-top: 36px;
   font-size: 1.2rem;
   color: var(--text-dim);
+}
+
+/* Glitch effect */
+@keyframes glitch-anim{
+  0%   { transform: translate(0); text-shadow: 4px 4px 0 var(--violet); }
+  25%  { transform: translate(-3px, 2px); clip-path: inset(10% 0 60% 0); text-shadow: -4px -2px 0 var(--cyan); }
+  50%  { transform: translate(3px, -1px); clip-path: inset(40% 0 20% 0); text-shadow: 4px 2px 0 var(--pink); }
+  75%  { transform: translate(-2px, 0); clip-path: inset(70% 0 5% 0); text-shadow: -2px 4px 0 var(--green); }
+  100% { transform: translate(0); clip-path: inset(0); text-shadow: 4px 4px 0 var(--violet); }
+}
+.glitching{
+  animation: glitch-anim 0.22s steps(2) infinite;
 }
 
 /* ---------- 8. ABOUT ---------- */
@@ -366,11 +389,34 @@ img,svg{ display:block; max-width:100%; }
   padding: 14px 20px;
   font-size: 1.3rem;
   transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 140px;
 }
 .slot:hover{
   border-color: var(--yellow);
   color: var(--yellow);
   transform: translateY(-4px);
+}
+.slot__name{ font-size: 1.25rem; }
+.slot__bar{
+  height: 6px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--text-dim);
+  position: relative;
+}
+.slot__fill{
+  display: block;
+  height: 100%;
+  background: var(--yellow);
+  transition: width 0.8s steps(8);
+}
+.slot__lvl{
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  align-self: flex-end;
 }
 
 /* ---------- 10. PROJECTS / CARTRIDGE SHELF ---------- */
@@ -495,6 +541,7 @@ img,svg{ display:block; max-width:100%; }
   pointer-events:none;
   transition: transform var(--dur) ease, opacity var(--dur) ease;
   z-index: 80;
+  white-space: nowrap;
 }
 .copy-toast.is-shown{ opacity:1; transform: translate(-50%, 0); }
 
@@ -600,7 +647,86 @@ img,svg{ display:block; max-width:100%; }
 }
 .game-overlay__close:hover{ color: var(--pink); border-color: var(--pink); }
 
-/* ---------- 16. RESPONSIVE ---------- */
+/* ---------- 16. TERMINAL ---------- */
+.terminal__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--green);
+}
+.terminal__close{
+  background: none;
+  border: 2px solid var(--green);
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+}
+.terminal__close:hover{ background: var(--green); color: var(--bg); }
+.terminal__out{
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 1.35rem;
+}
+.terminal__in{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 2px dashed var(--text-dim);
+  padding-top: 10px;
+}
+.terminal__prompt{ color: var(--yellow); font-weight: bold; }
+.terminal__in input{
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--green);
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+/* ---------- 17. DESKTOP SIDEBAR ---------- */
+@media (min-width: 1100px) {
+  .desktop-sidebar .console-frame {
+    margin: 0;
+    border: none;
+    outline: none;
+  }
+  .desktop-sidebar .hud {
+    position: fixed;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 190px;
+    height: auto;
+    background: rgba(23,18,43,0.95);
+    border: 4px solid var(--bg-alt);
+    padding: 24px 16px;
+    backdrop-filter: blur(4px);
+  }
+  .desktop-sidebar .hud__name { margin-bottom: 18px; }
+  .desktop-sidebar .hud__list {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .desktop-sidebar main {
+    margin-left: 220px;
+  }
+}
+
+/* ---------- 18. RESPONSIVE ---------- */
 @media (max-width: 600px){
   body{ font-size: 21px; }
   .section{ padding: 50px 0 35px; }

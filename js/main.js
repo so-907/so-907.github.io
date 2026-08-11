@@ -412,15 +412,6 @@
     padBtn("&#9673;", "LINKEDIN", s.linkedin);
     if (s.email) padBtn("&#9671;", "EMAIL", null, s.email, () => copyToClipboard(s.email));
 
-    // Download CV — adjust path if your PDF lives elsewhere
-    padBtn("&#9654;", "DOWNLOAD SAVE", null, null, () => {
-      const a = el("a");
-      a.href = "sonia_sapia_en.pdf"; // <-- change path if needed
-      a.download = "Sonia_Sapia_CV.pdf";
-      DOC.body.appendChild(a); a.click(); a.remove();
-      unlock("archivist", "Archivist: CV Downloaded");
-    });
-
     // Audio toggle
     const muteBtn = el("button", "pad-btn reveal");
     muteBtn.type = "button";
@@ -609,7 +600,7 @@
       const parts = cmd.split(/\s+/);
       switch (parts[0]) {
         case "help":
-          print("COMMANDS: goto <section> | theme <arcade|gameboy|synthwave|terminal> | contact | cv | clear | exit");
+          print("COMMANDS: goto <section> | theme <arcade|gameboy|synthwave|terminal> | contact | clear | exit");
           break;
         case "goto":
           {
