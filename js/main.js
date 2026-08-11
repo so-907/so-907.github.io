@@ -247,19 +247,37 @@
   }
 
   /* ---------- 7. HERO — Starfield + Glitch ---------- */
-  function initStarfield() {
-    const container = DOC.getElementById("heroStars");
-    if (!container || reduceMotion) return;
-    container.innerHTML = "";
-    const canvas = el("canvas", "hero-canvas");
-    Object.assign(canvas.style, { position:"absolute", inset:"0", zIndex:"0" });
-    container.appendChild(canvas);
-    const ctx = canvas.getContext("2d");
+    function initStarfield() {
+    if (reduceMotion) return;
 
-    const stars = Array.from({length: 140}, () => ({
+    /* Clear the old static star container inside the hero */
+    const oldContainer = DOC.getElementById("heroStars");
+    if (oldContainer) oldContainer.innerHTML = "";
+
+    /* Build a fixed canvas that covers the entire viewport */
+    const canvas = el("canvas", "starfield-bg");
+    Object.assign(canvas.style, {
+      position: "fixed",
+      top: "0", left: "0",
+      width: "100vw",
+      height: "100vh",
+      zIndex: "0",
+      pointerEvents: "none"
+    });
+
+    /* Insert before .console-frame so it sits behind all content */
+    const frame = DOC.querySelector(".console-frame");
+    if (frame && frame.parentNode) {
+      frame.parentNode.insertBefore(canvas, frame);
+    } else {
+      DOC.body.appendChild(canvas);
+    }
+
+    const ctx = canvas.getContext("2d");
+    const stars = Array.from({length: 160}, () => ({
       x: Math.random(), y: Math.random(),
-      z: 0.2 + Math.random() * 1.4,
-      size: 1 + Math.random() * 2.2
+      z: 0.15 + Math.random() * 1.3,
+      size: 1 + Math.random() * 2
     }));
 
     let mx = 0, my = 0, scrollSpeed = 0, lastScroll = 0;
@@ -269,17 +287,19 @@
     });
 
     function draw() {
-      const w = canvas.width = canvas.offsetWidth;
-      const h = canvas.height = canvas.offsetHeight;
+      const w = canvas.width = WIN.innerWidth;
+      const h = canvas.height = WIN.innerHeight;
       ctx.clearRect(0, 0, w, h);
+
       scrollSpeed = (WIN.scrollY - lastScroll) * 0.08;
       lastScroll = WIN.scrollY;
 
       stars.forEach(s => {
-        let px = (s.x * w + mx * 40 * s.z + scrollSpeed * s.z * 6) % w;
-        let py = (s.y * h + my * 25 * s.z) % h;
-        if (px < 0) px += w; if (py < 0) py += h;
-        ctx.fillStyle = `rgba(255, 210, 63, ${0.25 + s.z * 0.55})`;
+        let px = (s.x * w + mx * 50 * s.z + scrollSpeed * s.z * 8) % w;
+        let py = (s.y * h + my * 30 * s.z) % h;
+        if (px < 0) px += w;
+        if (py < 0) py += h;
+        ctx.fillStyle = `rgba(255, 210, 63, ${0.2 + s.z * 0.5})`;
         ctx.fillRect(px, py, s.size, s.size);
       });
       requestAnimationFrame(draw);
