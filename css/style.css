@@ -132,8 +132,9 @@ img,svg{ display:block; max-width:100%; }
 .reveal.is-visible{ opacity: 1; transform: translateY(0); }
 
 /* ---------- 4. CONSOLE FRAME & SCANLINES ---------- */
-.console-frame{
+.console-frame {
   position: relative;
+  z-index: 1;
   min-height: 100vh;
   border: 10px solid var(--bg-alt);
   outline: 6px solid var(--text-dim);
