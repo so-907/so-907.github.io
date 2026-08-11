@@ -161,34 +161,45 @@
   }
 
   /* ---------- 5. CUSTOM CURSOR (desktop only) ---------- */
-  function initCursor() {
+    function initCursor() {
     if (isTouch || reduceMotion) return;
     const c = el("div", "custom-cursor");
     c.innerHTML = pixelIconSVG("target");
     Object.assign(c.style, {
-      position:"fixed", top:"0", left:"0", width:"22px", height:"22px",
-      pointerEvents:"none", zIndex:"10000", color:"var(--yellow, #FFD23F)",
-      mixBlendMode:"difference", transition:"transform 0.08s steps(2)",
-      display:"none"
+      position: "fixed", top: "0", left: "0",
+      width: "22px", height: "22px",
+      pointerEvents: "none", zIndex: "10000",
+      color: "var(--yellow, #FFD23F)",
+      mixBlendMode: "difference",
+      display: "none"
+      /* NOTE: no transition here — we drive it purely in rAF */
     });
     DOC.body.appendChild(c);
     let cx = 0, cy = 0, tx = 0, ty = 0;
-    WIN.addEventListener("mousemove", e => { tx = e.clientX; ty = e.clientY; c.style.display = "block"; });
+    WIN.addEventListener("mousemove", e => {
+      tx = e.clientX; ty = e.clientY;
+      c.style.display = "block";
+    });
     function loop() {
-      cx = lerp(cx, tx, 0.18);
-      cy = lerp(cy, ty, 0.18);
+      cx = lerp(cx, tx, 0.6);   // <-- was 0.18
+      cy = lerp(cy, ty, 0.6);   // <-- was 0.18
       c.style.transform = `translate(${cx - 11}px, ${cy - 11}px)`;
       requestAnimationFrame(loop);
     }
     loop();
 
-    // Hover states
     const targets = "a, button, .slot, .pad-btn, .cart, .theme-dot, input, textarea";
     DOC.addEventListener("mouseover", e => {
-      if (e.target.closest(targets)) { c.style.transform = `translate(${cx - 11}px, ${cy - 11}px) scale(1.4)`; c.style.color = "var(--pink, #FF2E88)"; }
+      if (e.target.closest(targets)) {
+        c.style.transform = `translate(${cx - 11}px, ${cy - 11}px) scale(1.4)`;
+        c.style.color = "var(--pink, #FF2E88)";
+      }
     });
     DOC.addEventListener("mouseout", e => {
-      if (e.target.closest(targets)) { c.style.transform = `translate(${cx - 11}px, ${cy - 11}px) scale(1)`; c.style.color = "var(--yellow, #FFD23F)"; }
+      if (e.target.closest(targets)) {
+        c.style.transform = `translate(${cx - 11}px, ${cy - 11}px) scale(1)`;
+        c.style.color = "var(--yellow, #FFD23F)";
+      }
     });
   }
 
